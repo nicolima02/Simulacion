@@ -17,33 +17,37 @@
         </fieldset>
         <fieldset class="fieldset fieldset-2">
             <legend class="legend">Probabilidad del Tipo de Destinatario</legend>
-            <label class="label">Probabilidad de que fuera paciente</label><input class="input" type="number" placeholder="Probabilidad de que fuera paciente"><br>
-            <label class="label">Probabilidad de que haya asistido a la clinica</label><input class="input" type="number" placeholder="Probabilidad de que haya asistido a la clinica"><br>
-            <label class="label">Probabilidad de que nunca haya asistido a la clinica</label><input class="input" type="number" placeholder="Probabilidad de que nunca haya asistido">
+            <label class="label">Probabilidad de que fuera paciente</label><input class="input" type="number" placeholder="0,60"><br>
+            <label class="label">Probabilidad de que haya asistido a la clinica</label><input class="input" type="number" placeholder="0,25"><br>
+            <label class="label">Probabilidad de que nunca haya asistido a la clinica</label><input class="input" type="number" placeholder="0,15">
         </fieldset>
         <fieldset class="fieldset">
             <legend class="legend">Probabilidad de solicitud de asesor por tipo de destinatario</legend>
             <div>
                 <h2>Tipo de destinatario: Paciente</h2>
-                <label class="label">Probabilidad de que necesite un asesor</label><input class="input" type="number" placeholder="probabilidad de que necesite un asesor"><br>
-                <label class="label">Probabilidad de que no necesite un asesor</label><input class="input" type="number" placeholder="probabilidad de que no necesite un asesor"><br>
+                <label class="label">Probabilidad de que necesite un asesor   </label><input class="input" type="number" placeholder="0,50"><br>
+                <label class="label">Probabilidad de que no necesite un asesor</label><input class="input" type="number" placeholder="0,50"><br>
             </div>
             <div>
                 <h2>Tipo de Destinatario: asistio a la clinica</h2>
-                <label class="label">Probabilidad de que necesite un asesor</label><input class="input" type="number" placeholder="probabilidad de que necesite un asesor"><br>
-                <label class="label">Probabilidad de que no necesite un asesor</label><input class="input" type="number" placeholder="probabilidad de que no necesite un asesor"><br>
+                <label class="label">Probabilidad de que necesite un asesor   </label><input class="input" type="number" placeholder="0,40"><br>
+                <label class="label">Probabilidad de que no necesite un asesor</label><input class="input" type="number" placeholder="0,60"><br>
             </div>
             <div>
                 <h2>Tipo de Destinatario: Nunca asistio a la clinica</h2>
-                <label class="label">Probabilidad de que necesite un asesor</label><input class="input" type="number" placeholder="probabilidad de que necesite un asesor"><br>
-                <label class="label">Probabilidad de que no necesite un asesor</label><input class="input" type="number" placeholder="probabilidad de que no necesite un asesor"><br>
+                <label class="label">Probabilidad de que necesite un asesor   </label><input class="input" type="number" placeholder="0,15"><br>
+                <label class="label">Probabilidad de que no necesite un asesor</label><input class="input" type="number" placeholder="0,85"><br>
             </div>
         </fieldset>
+        <div class="div-button-2">
+            <button class="button submit" type="submit">Generar Datos</button>
+            <button class="button reset" type="reset">Restaurar Datos</button>
+        </div>
     </div>
 
     <!-- Tabla de datos -->
     <div class="div-table">
-
+        <h2 class="title-div-1">Tabla de Datos</h2>
     </div>
 </body>
 </html>
