@@ -4,43 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="Generador.js"></script>
     <title>TP3</title>
 </head>
+
+<script>
+    // Define la constante con los valores iniciales
+    const formData = {
+        tamaño: 0,
+        tipoPaciente: { tipo1: 0, tipo2: 0, tipo3: 0 },
+        necesitaAsesor: { tipo1Si: 0, tipo1No: 0, tipo2Si: 0, tipo2No: 0, tipo3Si: 0, tipo3No: 0 }
+    };
+
+    // Función para actualizar la lista con los valores del formulario
+    function actualizarValores() {
+        formData.tamaño = parseFloat(document.getElementById('tamaño').value);
+        formData.tipoPaciente.tipo1 = parseFloat(document.getElementById('tipo1').value);
+        formData.tipoPaciente.tipo2 = parseFloat(document.getElementById('tipo2').value);
+        formData.tipoPaciente.tipo3 = parseFloat(document.getElementById('tipo3').value);
+        formData.necesitaAsesor.tipo1Si = parseFloat(document.getElementById('asesorTipo1Si').value);
+        formData.necesitaAsesor.tipo1No = parseFloat(document.getElementById('asesorTipo1No').value);
+        formData.necesitaAsesor.tipo2Si = parseFloat(document.getElementById('asesorTipo2Si').value);
+        formData.necesitaAsesor.tipo2No = parseFloat(document.getElementById('asesorTipo2No').value);
+        formData.necesitaAsesor.tipo3Si = parseFloat(document.getElementById('asesorTipo3Si').value);
+        formData.necesitaAsesor.tipo3No = parseFloat(document.getElementById('asesorTipo3No').value);
+    }
+
+    // Función para generar los datos
+    function generarDatos() {
+        console.log("Datos generados:", formData);
+        GenerarDatos(formData);
+    }
+</script>
+
 <body>
     <h1>Medicina Prepaga</h1>
 
     <!-- Formulario de datos -->
     <div class="form-data">
+        <h2 class="title-div-1">Formulario de Carga de Datos</h2>
         <fieldset class="fieldset fieldset-2">
             <legend class="legend">Tamaño de la Muestra</legend>
-            <label class="label">Tamaño</label><input class="input" type="number" placeholder="10">
+            <label class="label">Tamaño</label><input id="tamaño" class="input" type="number" placeholder="10">
         </fieldset>
         <fieldset class="fieldset fieldset-2">
             <legend class="legend">Probabilidad del Tipo de Destinatario</legend>
-            <label class="label">Probabilidad de que fuera paciente</label><input class="input" type="number" placeholder="0,60"><br>
-            <label class="label">Probabilidad de que haya asistido a la clinica</label><input class="input" type="number" placeholder="0,25"><br>
-            <label class="label">Probabilidad de que nunca haya asistido a la clinica</label><input class="input" type="number" placeholder="0,15">
+            <label class="label">Probabilidad de que fuera paciente</label><input id="tipo1" value="0,60" class="input" type="number" placeholder="0,60"><br>
+            <label class="label">Probabilidad de que haya asistido a la clinica</label><input id="tipo2" class="input" type="number" placeholder="0,25"><br>
+            <label class="label">Probabilidad de que nunca haya asistido a la clinica</label><input id="tipo3" class="input" type="number" placeholder="0,15">
         </fieldset>
         <fieldset class="fieldset">
             <legend class="legend">Probabilidad de solicitud de asesor por tipo de destinatario</legend>
             <div>
                 <h2>Tipo de destinatario: Paciente</h2>
-                <label class="label">Probabilidad de que necesite un asesor   </label><input class="input" type="number" placeholder="0,50"><br>
-                <label class="label">Probabilidad de que no necesite un asesor</label><input class="input" type="number" placeholder="0,50"><br>
+                <label class="label">Probabilidad de que necesite un asesor   </label><input id="asesorTipo1Si" class="input" type="number" placeholder="0,50"><br>
+                <label class="label">Probabilidad de que no necesite un asesor</label><input id="asesorTipo1No" class="input" type="number" placeholder="0,50"><br>
             </div>
             <div>
                 <h2>Tipo de Destinatario: asistio a la clinica</h2>
-                <label class="label">Probabilidad de que necesite un asesor   </label><input class="input" type="number" placeholder="0,40"><br>
-                <label class="label">Probabilidad de que no necesite un asesor</label><input class="input" type="number" placeholder="0,60"><br>
+                <label class="label">Probabilidad de que necesite un asesor   </label><input id="asesorTipo2Si" class="input" type="number" placeholder="0,40"><br>
+                <label class="label">Probabilidad de que no necesite un asesor</label><input id="asesorTipo2No" class="input" type="number" placeholder="0,60"><br>
             </div>
             <div>
                 <h2>Tipo de Destinatario: Nunca asistio a la clinica</h2>
-                <label class="label">Probabilidad de que necesite un asesor   </label><input class="input" type="number" placeholder="0,15"><br>
-                <label class="label">Probabilidad de que no necesite un asesor</label><input class="input" type="number" placeholder="0,85"><br>
+                <label class="label">Probabilidad de que necesite un asesor   </label><input id="asesorTipo3Si" class="input" type="number" placeholder="0,15"><br>
+                <label class="label">Probabilidad de que no necesite un asesor</label><input id="asesorTipo3No" class="input" type="number" placeholder="0,85"><br>
             </div>
         </fieldset>
         <div class="div-button-2">
-            <button class="button submit" type="submit">Generar Datos</button>
+            <button class="button submit" type="button" onclick="generarDatos()">Generar Datos</button>
             <button class="button reset" type="reset">Restaurar Datos</button>
         </div>
     </div>
@@ -48,6 +80,28 @@
     <!-- Tabla de datos -->
     <div class="div-table">
         <h2 class="title-div-1">Tabla de Datos</h2>
+        <table class="table-data">
+            <thead class="thead">
+                <tr>
+                    <th>Numero de Mail</th>
+                    <th>RND Tipo Paciente</th>
+                    <th>Tipo de Paciente</th>
+                    <th>RND Necesita asesor</th>
+                    <th>Necesita asesor</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                <!-- Aquí puedes agregar filas según tus necesidades -->
+                <tr>
+                    <td>Dato 1</td>
+                    <td>Dato 2</td>
+                    <td>Dato 3</td>
+                    <td>Dato 4</td>
+                    <td>Dato 5</td>
+                </tr>
+                <!-- Puedes agregar más filas según sea necesario -->
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

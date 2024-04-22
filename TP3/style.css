@@ -10,14 +10,14 @@ body{
 
 h1{
     font-weight:600;
-    font-size: 2.5em;
+    font-size: 3em;
     letter-spacing: 3px;
     word-spacing: 10px;
 }
 
 .form-data{
     box-sizing: border-box;
-    width: 80%;
+    width: 60%;
     padding: 30px 50px;
     margin: auto;
     background-color: #2226;
@@ -106,6 +106,18 @@ h2{
     font-weight: 600;
     letter-spacing: 5px;
     word-spacing: 10px;
-    margin: 8px;
+    margin: 8px 8px 30px 8px;
     padding: 0;
+}
+
+table, tr, th, td{
+    border: 2px solid #ddd;
+}
+
+th{
+    height: 40px;
+}
+
+table{
+    width: 100%;
 }
