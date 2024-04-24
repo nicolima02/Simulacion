@@ -17,7 +17,7 @@ h1{
 
 .form-data{
     box-sizing: border-box;
-    width: 60%;
+    width: 80%;
     padding: 30px 50px;
     margin: auto;
     background-color: #2226;
@@ -110,14 +110,40 @@ h2{
     padding: 0;
 }
 
-table, tr, th, td{
-    border: 2px solid #ddd;
+th, td{
+    padding: 6px;
+    min-width: 180px; /* Ancho mínimo del 20% para las columnas */
+    box-sizing: border-box; /* Para incluir el padding en el ancho */
 }
 
 th{
+    background-color: #333;
     height: 40px;
+
+}
+
+td{
+    background-color: #bbb;
+    color: #333;
+}
+
+tr:nth-child(even) td {
+    background-color: #bbb; /* Color para filas pares */
+    color: #333;
+}
+tr:nth-child(odd) td {
+    background-color: #eee; /* Color para filas impares */
+    color: #333;
 }
 
 table{
     width: 100%;
+    border-collapse: separate;
+    border-spacing: 3px;
+    overflow-x: auto; /* Agregamos el scroll horizontal */
+}
+
+.table-container{
+    width: 100%;
+    overflow-x: auto;
 }
