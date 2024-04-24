@@ -8,35 +8,6 @@
     <title>TP3</title>
 </head>
 
-<script>
-    // Define la constante con los valores iniciales
-    const formData = {
-        tamaño: 0,
-        tipoPaciente: { tipo1: 0, tipo2: 0, tipo3: 0 },
-        necesitaAsesor: { tipo1Si: 0, tipo1No: 0, tipo2Si: 0, tipo2No: 0, tipo3Si: 0, tipo3No: 0 }
-    };
-
-    // Función para actualizar la lista con los valores del formulario
-    function actualizarValores() {
-        formData.tamaño = parseFloat(document.getElementById('tamaño').value);
-        formData.tipoPaciente.tipo1 = parseFloat(document.getElementById('tipo1').value);
-        formData.tipoPaciente.tipo2 = parseFloat(document.getElementById('tipo2').value);
-        formData.tipoPaciente.tipo3 = parseFloat(document.getElementById('tipo3').value);
-        formData.necesitaAsesor.tipo1Si = parseFloat(document.getElementById('asesorTipo1Si').value);
-        formData.necesitaAsesor.tipo1No = parseFloat(document.getElementById('asesorTipo1No').value);
-        formData.necesitaAsesor.tipo2Si = parseFloat(document.getElementById('asesorTipo2Si').value);
-        formData.necesitaAsesor.tipo2No = parseFloat(document.getElementById('asesorTipo2No').value);
-        formData.necesitaAsesor.tipo3Si = parseFloat(document.getElementById('asesorTipo3Si').value);
-        formData.necesitaAsesor.tipo3No = parseFloat(document.getElementById('asesorTipo3No').value);
-    }
-
-    // Función para generar los datos
-    function generarDatos() {
-        console.log("Datos generados:", formData);
-        GenerarDatos(formData);
-    }
-</script>
-
 <body>
     <h1>Medicina Prepaga</h1>
 
@@ -72,7 +43,7 @@
             </div>
         </fieldset>
         <div class="div-button-2">
-            <button class="button submit" type="button" onclick="generarDatos()">Generar Datos</button>
+            <button class="button submit" type="button" onclick="generarDatos(obtenerDatosFormulario())">Generar Datos</button>
             <button class="button reset" type="reset">Restaurar Datos</button>
         </div>
     </div>
