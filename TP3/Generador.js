@@ -1,10 +1,11 @@
 
 // Clase para los datos del formulario
 class DatosFormulario {
-    constructor(tamaño, tipos, asesor) {
+    constructor(tamaño, tipos, asesor, rango) {
         this.tamaño = tamaño;
         this.tipos = tipos;
         this.asesor = asesor;
+        this.rango = rango;
     }
 }
 
@@ -25,6 +26,21 @@ function validarDatos(datosFormulario) {
     if (datosFormulario.tipos.some(valor => valor < 0) || datosFormulario.asesor.some(valor => valor < 0)) {
         alert('Los valores deben ser positivos.');
         return false; // La validación no pasó
+    }
+
+    if (datosFormulario.rango[0] > datosFormulario.rango[1]){
+        alert('El rango de filas es incorrecto. El valor desde debe ser menor al valor hasta.');
+        return false;
+    }
+
+    if (datosFormulario.rango[0] <= 0){
+        alert('El rango de filas es incorrecto. El valor desde debe ser positivo.');
+        return false;
+    }
+
+    if (datosFormulario.rango[1] > datosFormulario.tamaño){
+        alert('El rango de filas es incorrecto. El valor hasta debe ser Menor o igual al tamaño de la muestra.');
+        return false;
     }
 
     // Si la validación pasa, retornar true
@@ -61,9 +77,13 @@ function obtenerDatosFormulario() {
         parseFloat(document.getElementById('asesorTipo3Si').value),
         parseFloat(document.getElementById('asesorTipo3No').value)
     ];
+    const rango = [
+        parseInt(document.getElementById('rangoDesde').value),
+        parseInt(document.getElementById('rangoHasta').value)
+    ]
 
     // Crear un objeto de la clase DatosFormulario con los valores obtenidos
-    const datosFormulario = new DatosFormulario(tamaño, tipos, asesor);
+    const datosFormulario = new DatosFormulario(tamaño, tipos, asesor, rango);
 
     return datosFormulario;
 }
