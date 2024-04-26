@@ -16,30 +16,30 @@
         <h2 class="title-div-1">Formulario de Carga de Datos</h2>
         <fieldset class="fieldset">
             <legend class="legend">Tamaño de la Muestra</legend>
-            <label class="label">Tamaño</label><input id="tamaño" class="input" type="number" placeholder="10">
+            <label class="label">Tamaño</label><input id="tamaño" class="input" type="number" placeholder="10" min="1" required>
         </fieldset>
         <fieldset class="fieldset fieldset-2">
             <legend class="legend">Probabilidad del Tipo de Destinatario</legend>
-            <label class="label">Probabilidad de que fuera paciente</label><input id="tipo1" value="0,60" class="input" type="number" placeholder="0,60"><br>
-            <label class="label">Probabilidad de que haya asistido a la clinica</label><input id="tipo2" class="input" type="number" placeholder="0,25"><br>
-            <label class="label">Probabilidad de que nunca haya asistido a la clinica</label><input id="tipo3" class="input" type="number" placeholder="0,15">
+            <label class="label">Probabilidad de que fuera paciente</label><input id="tipo1" class="input" type="text" placeholder="0.60" required pattern="0\.\d{1,2}" title="Ingrese un número decimal entre 0.01 y 0.99"><br>
+            <label class="label">Probabilidad de que haya asistido a la clinica</label><input id="tipo2" class="input" type="text" placeholder="0.25" required pattern="0\.\d{1,2}" title="Ingrese un número decimal entre 0.01 y 0.99"><br>
+            <label class="label">Probabilidad de que nunca haya asistido a la clinica</label><input id="tipo3" class="input" type="text" placeholder="0.15" required pattern="0\.\d{1,2}" title="Ingrese un número decimal entre 0.01 y 0.99">
         </fieldset>
         <fieldset class="fieldset">
             <legend class="legend">Probabilidad de solicitud de asesor por tipo de destinatario</legend>
             <div>
                 <h2>Tipo de destinatario: Paciente</h2>
-                <label class="label">Probabilidad de que necesite un asesor   </label><input id="asesorTipo1Si" class="input" type="number" placeholder="0,50"><br>
-                <label class="label">Probabilidad de que no necesite un asesor</label><input id="asesorTipo1No" class="input" type="number" placeholder="0,50"><br>
+                <label class="label">Probabilidad de que necesite un asesor   </label><input id="asesorTipo1Si" class="input" type="text" placeholder="0.50" required pattern="0\.\d{1,2}" title="Ingrese un número decimal entre 0.01 y 0.99"><br>
+                <label class="label">Probabilidad de que no necesite un asesor</label><input id="asesorTipo1No" class="input" type="text" placeholder="0.50" required pattern="0\.\d{1,2}" title="Ingrese un número decimal entre 0.01 y 0.99"><br>
             </div>
             <div>
                 <h2>Tipo de Destinatario: asistio a la clinica</h2>
-                <label class="label">Probabilidad de que necesite un asesor   </label><input id="asesorTipo2Si" class="input" type="number" placeholder="0,40"><br>
-                <label class="label">Probabilidad de que no necesite un asesor</label><input id="asesorTipo2No" class="input" type="number" placeholder="0,60"><br>
+                <label class="label">Probabilidad de que necesite un asesor   </label><input id="asesorTipo2Si" class="input" type="text" placeholder="0.40" required pattern="0\.\d{1,2}" title="Ingrese un número decimal entre 0.01 y 0.99"><br>
+                <label class="label">Probabilidad de que no necesite un asesor</label><input id="asesorTipo2No" class="input" type="text" placeholder="0.60" required pattern="0\.\d{1,2}" title="Ingrese un número decimal entre 0.01 y 0.99"><br>
             </div>
             <div>
                 <h2>Tipo de Destinatario: Nunca asistio a la clinica</h2>
-                <label class="label">Probabilidad de que necesite un asesor   </label><input id="asesorTipo3Si" class="input" type="number" placeholder="0,15"><br>
-                <label class="label">Probabilidad de que no necesite un asesor</label><input id="asesorTipo3No" class="input" type="number" placeholder="0,85"><br>
+                <label class="label">Probabilidad de que necesite un asesor   </label><input id="asesorTipo3Si" class="input" type="text" placeholder="0.15" required pattern="0\.\d{1,2}" title="Ingrese un número decimal entre 0.01 y 0.99"><br>
+                <label class="label">Probabilidad de que no necesite un asesor</label><input id="asesorTipo3No" class="input" type="text" placeholder="0.85" required pattern="0\.\d{1,2}" title="Ingrese un número decimal entre 0.01 y 0.99"><br>
             </div>
         </fieldset>
         <fieldset class="fieldset">
@@ -47,11 +47,11 @@
             <div class="div-inline">
                 <div class="div-2">
                     <label class="label label-2">Desde la Fila:</label>
-                    <input class="input input-2" type="number" placeholder="100">
+                    <input id="rangoDesde" class="input input-2" type="number" placeholder="100" required min="1">
                 </div>
                 <div class="div-2">
                     <label class="label label-2">Hasta la Fila:</label>
-                    <input class="input input-2" type="number" placeholder="200">
+                    <input id="rangoHasta" class="input input-2" type="number" placeholder="200" required>
                 </div>
             </div>
         </fieldset>

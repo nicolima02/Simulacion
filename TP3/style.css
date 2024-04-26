@@ -65,13 +65,25 @@ h1{
 
 }
 
-.input{
-    width: 10%;
-    height: 30px;
+.input:valid{
+    width: 13%;
+    height: 25px;
     border: 1px solid #ccc;
     border-radius: 3px;
-    margin: 5px 20px 5px 33.7%;
+    margin: 5px 20px 5px 20px;
     background-color: #2226;
+    color: #ccc;
+    padding: 2px 2px 2px 10px;
+    font-weight: 600;
+}
+
+.input:invalid{
+    width: 13%;
+    height: 25px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin: 5px 20px 5px 20px;
+    background-color: #a22c;
     color: #ccc;
     padding: 2px 2px 2px 10px;
     font-weight: 600;
@@ -79,6 +91,7 @@ h1{
 
 .input-2{
     margin-left: 10px;
+    width: 25%;
 }
 
 h2{

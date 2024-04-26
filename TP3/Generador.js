@@ -1,4 +1,5 @@
 
+
 // Clase para los datos del formulario
 class DatosFormulario {
     constructor(tamaño, tipos, asesor, rango) {
@@ -8,6 +9,16 @@ class DatosFormulario {
         this.rango = rango;
     }
 }
+
+const generarRandom = (desde, hasta) =>{
+    
+    if (desde >= hasta) {
+        console.error('El valor "desde" debe ser menor que el valor "hasta".');
+        return null;
+    }
+
+    return Math.floor(Math.random() * (hasta - desde)) + desde;
+} 
 
 // Función para validar los datos del formulario
 function validarDatos(datosFormulario) {
@@ -23,8 +34,8 @@ function validarDatos(datosFormulario) {
         return false; // La validación no pasó
     }
 
-    if (datosFormulario.tipos.some(valor => valor < 0) || datosFormulario.asesor.some(valor => valor < 0)) {
-        alert('Los valores deben ser positivos.');
+    if (datosFormulario.tipos.some(valor => 1 >= valor <= 0) || datosFormulario.asesor.some(valor => 1 >= valor <= 0)) {
+        alert('Los valores de las probabilidades deben ser positivos entre 0,01 y 0,99.');
         return false; // La validación no pasó
     }
 
@@ -43,6 +54,25 @@ function validarDatos(datosFormulario) {
         return false;
     }
 
+    if ((datosFormulario.tipos[0] + datosFormulario.tipos[1] + datosFormulario.tipos[2]) != 1){
+        alert('La suma de las probabilidades de los tipos de destinatarios debe dar 1.');
+        return false;
+    }
+
+    if ((datosFormulario.asesor[0] + datosFormulario.asesor[1]) != 1){
+        alert('La suma de las probabilidades de los asesores para el destinatario paciente debe dar 1.');
+        return false;
+    }
+
+    if ((datosFormulario.asesor[2] + datosFormulario.asesor[3]) != 1){
+        alert('La suma de las probabilidades de los asesores para el destinatario que asistio a la clinica debe dar 1.');
+        return false;
+    }
+
+    if ((datosFormulario.asesor[4] + datosFormulario.asesor[5]) != 1){
+        alert('La suma de las probabilidades de los asesores para el destinatario que nunca asistio a la clinica debe dar 1.');
+        return false;
+    }
     // Si la validación pasa, retornar true
     return true;
 }
@@ -54,6 +84,18 @@ function generarDatos(datosFormulario) {
         // Aquí puedes implementar la lógica para generar los datos utilizando los valores de datosFormulario
         console.log('Generando datos...');
         console.log(datosFormulario);
+        let cont = 0;
+        while (cont < datosFormulario.tamaño){
+            let rnd1 = generarRandom(0,1);
+            let rnd2 = generarRandom(0,1);
+            console.log(rnd1)
+            console.log(rnd2)
+
+            cont ++;
+        } 
+
+
+
         // Por ejemplo, puedes realizar cálculos, operaciones, etc.
     } else {
         console.log('Los datos ingresados no son válidos.');
