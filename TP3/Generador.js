@@ -10,6 +10,17 @@ class DatosFormulario {
     }
 }
 
+class Mail{
+    constructor(numero, random1, tipo, random2, asesor, cantidaAsesores){
+        this.numero = numero;
+        this.random1 = random1;
+        this.tipo = tipo;
+        this.random2 = random2;
+        this.asesor = asesor;
+        this.cantidaAsesores = cantidaAsesores;
+    }
+}
+
 const generarRandom = (desde, hasta) =>{
     
     if (desde >= hasta) {
@@ -17,7 +28,8 @@ const generarRandom = (desde, hasta) =>{
         return null;
     }
 
-    return Math.floor(Math.random() * (hasta - desde)) + desde;
+    let numeroAleatorio = Math.random() * (hasta - desde) + desde;
+    return numeroAleatorio.toFixed(2); // Convierte el número en una cadena con dos decimales
 } 
 
 // Función para validar los datos del formulario
@@ -77,6 +89,51 @@ function validarDatos(datosFormulario) {
     return true;
 }
 
+const calcularTipo = (rnd1,tipos) =>{
+    let tipo = "";
+    if(rnd1 < tipos[0]){
+        tipo = "Paciente"
+    }
+    if(rnd1 < tipos[0] + tipos[1]){
+        tipo = "Asistio a la clinica"
+    }
+    else{
+        tipo = "Nunca Asistio a la clinica"
+    }
+
+    return tipo
+}
+
+const calcularAsesor = (rnd2,asesores,tipo) =>{
+    let asesor = "";
+    if(tipo == "Paciente"){
+        if(rnd2 < asesores[0]){
+            asesor = "si"
+        }
+        else{
+            asesor = "no"
+        }
+    }
+    if(tipo == "Asistio a la clinica"){
+        if(rnd2 < asesores[2]){
+            asesor = "si"
+        }
+        else{
+            asesor = "no"
+        }
+    }
+    else{
+        if(rnd2 < asesores[4]){
+            asesor = "si"
+        }
+        else{
+            asesor = "no"
+        }
+    }
+
+    return asesor
+}
+
 // Función para generar los datos con base en los datos del formulario
 function generarDatos(datosFormulario) {
     // Verificar si los datos son válidos antes de proceder
@@ -85,12 +142,21 @@ function generarDatos(datosFormulario) {
         console.log('Generando datos...');
         console.log(datosFormulario);
         let cont = 0;
+        let datosMails = [];
+        let ultimoMail = new Mail(0,0,"",0,"",0);
         while (cont < datosFormulario.tamaño){
-            let rnd1 = generarRandom(0,1);
-            let rnd2 = generarRandom(0,1);
+            let rnd1 = generarRandom(0, 1);
+            let rnd2 = generarRandom(0, 1);
             console.log(rnd1)
             console.log(rnd2)
-
+            let tipo = calcularTipo(rnd1,datosFormulario.tipos);
+            let asesor = calcularAsesor(rnd2,datosFormulario.asesor,tipo);
+            let cantidad = ultimoMail[5]
+            if (asesor == "si"){
+                cantidad ++
+            }
+            const mail = new Mail(ultimoMail[0] + 1, rnd1, tipo, rnd2, asesor, cantidad)
+            
             cont ++;
         } 
 
