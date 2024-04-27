@@ -145,6 +145,8 @@ function generarDatos(datosFormulario) {
         let datosMails = [];
         let ultimoMail = new Mail(0, 0, "", 0, "", 0);
         while (cont < datosFormulario.tamaño) {
+            cont ++;
+            console.log(cont)
             let rnd1 = generarRandom(0, 1);
             let rnd2 = generarRandom(0, 1);
             console.log(rnd1);
@@ -155,12 +157,36 @@ function generarDatos(datosFormulario) {
             if (asesor == "si") {
                 cantidad = cantidad + 1;
             }
-            const mail = new Mail(cont + 1, rnd1, tipo, rnd2, asesor, cantidad);
-            datosMails.push(mail);
+            const mail = new Mail(cont, rnd1, tipo, rnd2, asesor, cantidad);
+            
+            if ((cont >= datosFormulario.rango[0] && cont <= datosFormulario.rango[1]) || cont == datosFormulario.tamaño) {
+                datosMails.push(mail);
+                console.log("Mail agregado:", mail);
+            } else {
+                console.log("Mail no agregado.");
+            }
+
             ultimoMail = mail;
-            cont++;
         console.log(datosMails)
-        } 
+
+        let tablaMails = document.querySelector('.tbody');
+
+        // Limpiamos el contenido actual de la tabla
+        tablaMails.innerHTML = '';
+    
+        // Iteramos sobre la lista de mails y creamos las filas de la tabla
+        datosMails.forEach(mail => {
+            let fila = tablaMails.insertRow();
+    
+            // Insertamos las celdas con la información de cada mail
+            fila.insertCell().textContent = mail.numero;
+            fila.insertCell().textContent = mail.random1;
+            fila.insertCell().textContent = mail.tipo;
+            fila.insertCell().textContent = mail.random2;
+            fila.insertCell().textContent = mail.asesor;
+            fila.insertCell().textContent = mail.cantidaAsesores;
+        });
+    } 
 
 
 
