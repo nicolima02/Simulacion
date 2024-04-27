@@ -143,21 +143,23 @@ function generarDatos(datosFormulario) {
         console.log(datosFormulario);
         let cont = 0;
         let datosMails = [];
-        let ultimoMail = new Mail(0,0,"",0,"",0);
-        while (cont < datosFormulario.tamaño){
+        let ultimoMail = new Mail(0, 0, "", 0, "", 0);
+        while (cont < datosFormulario.tamaño) {
             let rnd1 = generarRandom(0, 1);
             let rnd2 = generarRandom(0, 1);
-            console.log(rnd1)
-            console.log(rnd2)
-            let tipo = calcularTipo(rnd1,datosFormulario.tipos);
-            let asesor = calcularAsesor(rnd2,datosFormulario.asesor,tipo);
-            let cantidad = ultimoMail[5]
-            if (asesor == "si"){
-                cantidad ++
+            console.log(rnd1);
+            console.log(rnd2);
+            let tipo = calcularTipo(rnd1, datosFormulario.tipos);
+            let asesor = calcularAsesor(rnd2, datosFormulario.asesor, tipo);
+            let cantidad = ultimoMail.cantidaAsesores;
+            if (asesor == "si") {
+                cantidad = cantidad + 1;
             }
-            const mail = new Mail(ultimoMail[0] + 1, rnd1, tipo, rnd2, asesor, cantidad)
-            
-            cont ++;
+            const mail = new Mail(cont + 1, rnd1, tipo, rnd2, asesor, cantidad);
+            datosMails.push(mail);
+            ultimoMail = mail;
+            cont++;
+        console.log(datosMails)
         } 
 
 
