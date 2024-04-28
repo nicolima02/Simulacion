@@ -167,6 +167,7 @@ function generarDatos(datosFormulario) {
             }
 
             ultimoMail = mail;
+        } 
         console.log(datosMails)
 
         let tablaMails = document.querySelector('.tbody');
@@ -186,7 +187,6 @@ function generarDatos(datosFormulario) {
             fila.insertCell().textContent = mail.asesor;
             fila.insertCell().textContent = mail.cantidaAsesores;
         });
-    } 
 
 
 
