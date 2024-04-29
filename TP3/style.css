@@ -167,9 +167,12 @@ table{
     border-collapse: separate;
     border-spacing: 3px;
     overflow-x: auto; /* Agregamos el scroll horizontal */
+    overflow-y: auto;
 }
 
 .table-container{
     width: 100%;
     overflow-x: auto;
+    max-height: 500px;
+    overflow-y: auto;
 }
