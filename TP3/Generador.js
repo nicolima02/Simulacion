@@ -23,6 +23,9 @@ class Mail{
 
 const generarRandom = () =>{
     let numeroAleatorio = Math.random()
+    if(numeroAleatorio == 1){
+        numeroAleatorio = numeroAleatorio - 0.01
+    }
     return numeroAleatorio.toFixed(2); // Convierte el número en una cadena con dos decimales
 } 
 
@@ -220,3 +223,12 @@ function obtenerDatosFormulario() {
     return datosFormulario;
 }
 
+const limpiarFormulario = () => {
+    // Obtén todos los elementos de input del formulario
+    const inputs = document.querySelectorAll('input');
+
+    // Recorre cada elemento de input y establece su valor como cadena vacía
+    inputs.forEach(input => {
+        input.value = '';
+    });
+};
