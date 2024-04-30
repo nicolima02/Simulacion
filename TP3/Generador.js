@@ -21,14 +21,8 @@ class Mail{
     }
 }
 
-const generarRandom = (desde, hasta) =>{
-    
-    if (desde >= hasta) {
-        console.error('El valor "desde" debe ser menor que el valor "hasta".');
-        return null;
-    }
-
-    let numeroAleatorio = Math.random() * (hasta - desde) + desde;
+const generarRandom = () =>{
+    let numeroAleatorio = Math.random()
     return numeroAleatorio.toFixed(2); // Convierte el número en una cadena con dos decimales
 } 
 
@@ -149,8 +143,8 @@ function generarDatos(datosFormulario) {
         while (cont < datosFormulario.tamaño) {
             cont ++;
             console.log(cont)
-            let rnd1 = generarRandom(0, 1);
-            let rnd2 = generarRandom(0, 1);
+            let rnd1 = generarRandom();
+            let rnd2 = generarRandom();
             console.log(rnd1);
             console.log(rnd2);
             let tipo = calcularTipo(rnd1, datosFormulario.tipos);
