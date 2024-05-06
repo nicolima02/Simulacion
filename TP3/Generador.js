@@ -11,13 +11,16 @@ class DatosFormulario {
 }
 
 class Mail{
-    constructor(numero, random1, tipo, random2, asesor, cantidaAsesores){
+    constructor(numero, random1, tipo, random2, asesor, cantidaAsesores, asesoresXPaciente, asesoresXAsistio, asesoresXNuncaAsistio){
         this.numero = numero;
         this.random1 = random1;
         this.tipo = tipo;
         this.random2 = random2;
         this.asesor = asesor;
         this.cantidaAsesores = cantidaAsesores;
+        this.asesoresXPaciente = asesoresXPaciente;
+        this.asesoresXAsistio = asesoresXAsistio;
+        this.asesoresXNuncaAsistio = asesoresXNuncaAsistio;
     }
 }
 
@@ -142,7 +145,7 @@ function generarDatos(datosFormulario) {
         console.log(datosFormulario);
         let cont = 0;
         let datosMails = [];
-        let ultimoMail = new Mail(0, 0, "", 0, "", 0);
+        let ultimoMail = new Mail(0, 0, "", 0, "", 0, 0, 0, 0);
         while (cont < datosFormulario.tamaño) {
             cont ++;
             console.log(cont)
@@ -153,10 +156,22 @@ function generarDatos(datosFormulario) {
             let tipo = calcularTipo(rnd1, datosFormulario.tipos);
             let asesor = calcularAsesor(rnd2, datosFormulario.asesor, tipo);
             let cantidad = ultimoMail.cantidaAsesores;
+            let asesoresXPaciente = ultimoMail.asesoresXPaciente;
+            let asesoresXAsistio = ultimoMail.asesoresXAsistio;
+            let asesoresXNuncaAsistio = ultimoMail.asesoresXNuncaAsistio;
             if (asesor == "si") {
                 cantidad = cantidad + 1;
+                if(tipo == "Paciente"){
+                    asesoresXPaciente ++;
+                }
+                if(tipo == "Asistio a la clinica"){
+                    asesoresXAsistio ++;
+                }
+                if(tipo == "Nunca Asistio a la clinica"){
+                    asesoresXNuncaAsistio ++;
+                }
             }
-            const mail = new Mail(cont, rnd1, tipo, rnd2, asesor, cantidad);
+            const mail = new Mail(cont, rnd1, tipo, rnd2, asesor, cantidad, asesoresXPaciente, asesoresXAsistio, asesoresXNuncaAsistio);
             
             if ((cont >= datosFormulario.rango[0] && cont <= datosFormulario.rango[1]) || cont == datosFormulario.tamaño) {
                 datosMails.push(mail);
@@ -185,6 +200,9 @@ function generarDatos(datosFormulario) {
             fila.insertCell().textContent = mail.random2;
             fila.insertCell().textContent = mail.asesor;
             fila.insertCell().textContent = mail.cantidaAsesores;
+            fila.insertCell().textContent = mail.asesoresXPaciente;
+            fila.insertCell().textContent = mail.asesoresXAsistio;
+            fila.insertCell().textContent = mail.asesoresXNuncaAsistio;
         });
 
 
