@@ -138,14 +138,13 @@ h2{
 
 th, td{
     padding: 6px;
-    min-width: 180px; /* Ancho mínimo del 20% para las columnas */
     box-sizing: border-box; /* Para incluir el padding en el ancho */
 }
 
 th{
     background-color: #333;
     height: 40px;
-
+    width: 50px;
 }
 
 td{
@@ -175,4 +174,10 @@ table{
     overflow-x: auto;
     max-height: 500px;
     overflow-y: auto;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
